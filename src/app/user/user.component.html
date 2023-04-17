@@ -1,20 +1,22 @@
 <p>user works!</p>
-<form>
+<form [formGroup]="userForm">
     <label>
         Username
-        <input type="text" [formControl]="username"> 
+        <input type="text" formControlName="username"> 
     </label>
-    <label>
-        Email
-        <input type="text" [formControl]="email"> 
-    </label>
+    <div formGroupName="credentials">
         <label>
-        Password
-        <input type="text" [formControl]="password"> 
-    </label>
+            Email
+            <input type="text" formControlName="email"> 
+        </label>
+            <label>
+            Password
+            <input type="text" formControlName="password"> 
+        </label>            
+    </div>
     <label>
         City
-        <input type="text" [formControl]="city"> 
+        <input type="text" formControlName="city"> 
     </label>
     <button type="button" (click)="Register()">Register</button>
 </form>

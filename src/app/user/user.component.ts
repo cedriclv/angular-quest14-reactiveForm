@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { User } from '../entities/User';
 
 @Component({
@@ -10,18 +10,26 @@ import { User } from '../entities/User';
 export class UserComponent {
   
   user? : User;
-  
-  username = new FormControl('');
-  email = new FormControl('');
-  password = new FormControl('');
-  city = new FormControl('Orleans');
+
+  userForm = this.fb.group({
+    username: [''],
+    city: [''],
+    credentials: this.fb.group({
+      email: [''],
+      password: [''],  
+    })
+  })
+
+  constructor(private fb : FormBuilder){}
 
   Register(){
+    console.log(this.userForm.value);
     this.user = new User(
-    this.username.value,      
-    this.email.value,   
-    this.password.value,      
-    this.city.value
+    this.userForm.value.username,      
+    this.userForm.value.credentials?.email,      
+    this.userForm.value.credentials?.password,      
+    this.userForm.value.city,      
     )      
+    
   }
 }
