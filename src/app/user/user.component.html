@@ -1,0 +1,26 @@
+<p>user works!</p>
+<form>
+    <label>
+        Username
+        <input type="text" [formControl]="username"> 
+    </label>
+    <label>
+        Email
+        <input type="text" [formControl]="email"> 
+    </label>
+        <label>
+        Password
+        <input type="text" [formControl]="password"> 
+    </label>
+    <label>
+        City
+        <input type="text" [formControl]="city"> 
+    </label>
+    <button type="button" (click)="Register()">Register</button>
+</form>
+
+<ul *ngIf="user not null">
+    <li>Name :{{user.username}}</li>
+    <li>Email: {{user.email}}</li>
+    <li>Password: {{user.password}}</li>
+    <li>City: {{user.city}}</li>
